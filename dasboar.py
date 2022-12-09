@@ -26,7 +26,8 @@ def download_data():
 download_data()
 st.subheader('**Descripcion**')
 st.write("Nuestra presente página es para ayudar a estudiantes y/o padres de familia que busca si cierta universidad está licenciada o no por parte de SUNEDU.")
-
+#tabla general de las universidades(dataset)
+st.write("*- A continuación se muestra la tabla general de las universidades con sus datos respectivos*")
 st.subheader("Tabla General")
 data= pd.read_csv("data.csv",sep="|",  encoding= "latin_1")
 data=data.set_index("CODIGO_ENTIDAD")
@@ -37,7 +38,10 @@ st.info("Informacion de la tabla: https://www.datosabiertos.gob.pe/dataset/suned
 set_universidades= data['NOMBRE'].dropna().unique()
 
 
-
+#seleccionador por tipo de gestion, ademas muestra una tabla por orden de gestion
+st.write("""
+	*- Seleccione “Privado” o “Público” para que así le muestre las universidades por su tipo de gestión, además de la información del estado de licenciamiento de la universidad*
+	""")
 
 esta= data["TIPO_GESTION"].unique()
 licensi= data["ESTADO_LICENCIAMIENTO"].unique()
@@ -51,8 +55,10 @@ elif estado== "Privado":
     public= data.loc[data.loc[:,"TIPO_GESTION"]=="PRIVADO"]
     st.dataframe(data.loc[data.loc[:,"TIPO_GESTION"]=="PRIVADO"])
 
-
-
+#seleccionador para comparar el periodo de licenciamiento de diferentes universidades, así mismo muestra la información de la universidad seleccionada
+st.write("""
+	*- A continuación usted podrá comparar diferentes universidades por su “Periodo de licenciamiento”, además le mostrará solo la información de las universidades seleccionadas*
+	""")
 opti= st.multiselect(
     "Seleccione las universidades que desea comparar la el periodo de licenciamiento", 
     options= data["NOMBRE"].unique()
