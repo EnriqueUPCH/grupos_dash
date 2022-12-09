@@ -7,15 +7,26 @@ import gdown
 
 st.set_page_config(page_title="Dashboard", page_icon=":bar_chart:")
 st.title("SUNEDU - Licenciamiento Institucional")
-st.header('**Integrantes:**')
-
-col1, col2, col3,col4,col5 = st.columns(5)
-
-col1.metric("UPCH", "Sebastian", "Saldaña")
-col2.metric("UPCH", "Valery", "Siccha")
-col3.metric("UPCH", "Gyoran", "Moreno")
-col4.metric("UPCH", "Enrique", "Orozco")
-col5.metric("UPCH", "Jimena", "Peña")
+st.title("GRUPO 06")
+st.subheader("MIEMBROS DEL GRUPO")
+col1, col2= st.columns([2,2])
+with col1:
+	st.markdown("""
+		- ENRIQUE OROZCO MENDOZA
+		- JIMENA MILUSKA PEÑA MEJIA
+		- VALERY KRYSTAL SICCHA HUAYANAY
+		- SEBASTIAN ANTONIO SALDAÑA RODRIGUEZ
+		- GYORAN ZAITO MORENO HUASUPOMA
+		 """)
+with col2:
+	st.markdown("""
+		- correo: enrique.orozco@upch.pe
+		- correo: jimena.pena@upch.pe
+		- correo: valery.siccha@upch.pe
+		- correo: sebastian.saldana@upch.pe
+		- correo: gyoran.moreno@upch.pe
+		""")
+st.write("---")
 
 @st.experimental_memo
 def download_data():
